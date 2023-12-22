@@ -25,7 +25,7 @@
     </parent>
     <groupId>org.apache.dolphinscheduler</groupId>
     <artifactId>dolphinscheduler</artifactId>
-    <version>3.1.1-SNAPSHOT</version>
+    <version>3.1.0</version>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
     <description>Dolphin Scheduler is a distributed and easy-to-expand visual DAG workflow scheduling system, dedicated
@@ -101,213 +101,213 @@
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-server</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-master</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-worker</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-log-server</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-standalone-server</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-common</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-alert-plugins</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-registry-plugins</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-registry-all</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-dao</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-api</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-remote</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-service</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-meter</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-spi</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-data-quality</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-python</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-alert-api</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-alert-server</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-alert-dingtalk</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-alert-email</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-alert-feishu</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-alert-http</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-alert-script</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-alert-slack</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-alert-wechat</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-alert-pagerduty</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-alert-webexteams</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-alert-telegram</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-registry-api</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-registry-zookeeper</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-registry-mysql</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-scheduler-api</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-scheduler-quartz</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-datasource-all</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-datasource-api</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-task-api</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-task-python</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-task-all</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-ui</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dolphinscheduler</groupId>
                 <artifactId>dolphinscheduler-tools</artifactId>
-                <version>${project.version}</version>
+                <version>3.1.0</version>
             </dependency>
         </dependencies>
 
