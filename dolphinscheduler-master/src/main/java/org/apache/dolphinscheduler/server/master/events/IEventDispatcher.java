@@ -15,12 +15,18 @@
  * limitations under the License.
  */
 
-package org.apache.dolphinscheduler.server.master.exception;
+package org.apache.dolphinscheduler.server.master.events;
 
-public class TaskExecutionContextCreateException extends MasterException {
+/**
+ * The event dispatcher interface used to dispatch event.
+ * Each event should be dispatched to the corresponding workflow event queue.
+ */
+public interface IEventDispatcher<E> {
 
-    public TaskExecutionContextCreateException(String message) {
-        super(message);
-    }
+    void start();
+
+    void stop();
+
+    void dispatchEvent(E event);
 
 }
