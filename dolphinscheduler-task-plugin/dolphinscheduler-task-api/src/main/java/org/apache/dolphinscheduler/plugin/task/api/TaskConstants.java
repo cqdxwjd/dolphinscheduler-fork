@@ -286,7 +286,7 @@ public class TaskConstants {
     /**
      * jdbc url
      */
-    public static final String JDBC_MYSQL = "jdbc:mysql://";
+    public static final String JDBC_MYSQL = "jdbc:mariadb://";
     public static final String JDBC_POSTGRESQL = "jdbc:postgresql://";
     public static final String JDBC_HIVE_2 = "jdbc:hive2://";
     public static final String JDBC_CLICKHOUSE = "jdbc:clickhouse://";
@@ -300,7 +300,7 @@ public class TaskConstants {
      * driver
      */
     public static final String ORG_POSTGRESQL_DRIVER = "org.postgresql.Driver";
-    public static final String COM_MYSQL_CJ_JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    public static final String COM_MYSQL_CJ_JDBC_DRIVER = "org.mariadb.jdbc.Driver";
     public static final String ORG_APACHE_HIVE_JDBC_HIVE_DRIVER = "org.apache.hive.jdbc.HiveDriver";
     public static final String COM_CLICKHOUSE_JDBC_DRIVER = "ru.yandex.clickhouse.ClickHouseDriver";
     public static final String COM_ORACLE_JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
