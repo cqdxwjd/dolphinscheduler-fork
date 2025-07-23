@@ -15,7 +15,8 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.apache</groupId>
@@ -24,7 +25,7 @@
     </parent>
     <groupId>org.apache.dolphinscheduler</groupId>
     <artifactId>dolphinscheduler</artifactId>
-    <version>3.1.1-SNAPSHOT</version>
+    <version>3.1.0</version>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
     <description>Dolphin Scheduler is a distributed and easy-to-expand visual DAG workflow scheduling system, dedicated
@@ -85,7 +86,7 @@
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
         <owasp-dependency-check-maven.version>7.1.2</owasp-dependency-check-maven.version>
         <lombok.version>1.18.20</lombok.version>
-        <docker.hub>apache</docker.hub>
+        <docker.hub>hub.hmf.xyz</docker.hub>
         <docker.repo>${project.name}</docker.repo>
         <docker.tag>${project.version}</docker.tag>
         <docker.build.skip>true</docker.build.skip>
@@ -456,9 +457,9 @@
                                     <argument>--load</argument>
                                     <argument>--no-cache</argument>
                                     <argument>-t</argument>
-                                    <argument>${docker.hub}/${docker.repo}:${docker.tag}</argument>
+                                    <argument>${docker.hub}/emr/${docker.repo}:${docker.tag}</argument>
                                     <argument>-t</argument>
-                                    <argument>${docker.hub}/${docker.repo}:latest</argument>
+                                    <argument>${docker.hub}/emr/${docker.repo}:latest</argument>
                                     <argument>${project.basedir}</argument>
                                     <argument>--file=src/main/docker/Dockerfile</argument>
                                 </arguments>
@@ -485,9 +486,9 @@
                                     <argument>--no-cache</argument>
                                     <argument>--push</argument>
                                     <argument>-t</argument>
-                                    <argument>${docker.hub}/${docker.repo}:${docker.tag}</argument>
+                                    <argument>${docker.hub}/emr/${docker.repo}:${docker.tag}</argument>
                                     <argument>-t</argument>
-                                    <argument>${docker.hub}/${docker.repo}:latest</argument>
+                                    <argument>${docker.hub}/emr/${docker.repo}:latest</argument>
                                     <argument>${project.basedir}</argument>
                                     <argument>--file=src/main/docker/Dockerfile</argument>
                                 </arguments>

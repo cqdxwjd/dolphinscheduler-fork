@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-FROM openjdk:8-jre-slim-bullseye
+FROM hub.hmf.xyz/openjdk:8-jre-slim-bullseye
 
 ENV DOCKER true
 ENV TZ Asia/Shanghai
