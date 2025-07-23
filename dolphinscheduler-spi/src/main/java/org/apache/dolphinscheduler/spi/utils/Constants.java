@@ -21,37 +21,63 @@ package org.apache.dolphinscheduler.spi.utils;
  * constants
  */
 public class Constants {
+
     private Constants() {
         throw new IllegalStateException("Constants class");
     }
 
-    /** alert plugin param field string **/
+    /**
+     * alert plugin param field string
+     **/
     public static final String STRING_PLUGIN_PARAM_FIELD = "field";
-    /** alert plugin param name string **/
+    /**
+     * alert plugin param name string
+     **/
     public static final String STRING_PLUGIN_PARAM_NAME = "name";
-    /** alert plugin param props string **/
+    /**
+     * alert plugin param props string
+     **/
     public static final String STRING_PLUGIN_PARAM_PROPS = "props";
-    /** alert plugin param type string **/
+    /**
+     * alert plugin param type string
+     **/
     public static final String STRING_PLUGIN_PARAM_TYPE = "type";
-    /** alert plugin param title string **/
+    /**
+     * alert plugin param title string
+     **/
     public static final String STRING_PLUGIN_PARAM_TITLE = "title";
-    /** alert plugin param value string **/
+    /**
+     * alert plugin param value string
+     **/
     public static final String STRING_PLUGIN_PARAM_VALUE = "value";
-    /** alert plugin param validate string **/
+    /**
+     * alert plugin param validate string
+     **/
     public static final String STRING_PLUGIN_PARAM_VALIDATE = "validate";
-    /** alert plugin param options string **/
+    /**
+     * alert plugin param options string
+     **/
     public static final String STRING_PLUGIN_PARAM_OPTIONS = "options";
-    /**plugin param emit string **/
+    /**
+     * plugin param emit string
+     **/
     public static final String STRING_PLUGIN_PARAM_EMIT = "emit";
 
-
-    /** string true */
+    /**
+     * string true
+     */
     public static final String STRING_TRUE = "true";
-    /** string false */
+    /**
+     * string false
+     */
     public static final String STRING_FALSE = "false";
-    /** string yes */
+    /**
+     * string yes
+     */
     public static final String STRING_YES = "YES";
-    /** string no */
+    /**
+     * string no
+     */
     public static final String STRING_NO = "NO";
 
     /**
@@ -122,7 +148,8 @@ public class Constants {
     /**
      * hadoop.security.authentication
      */
-    public static final String HADOOP_SECURITY_AUTHENTICATION_STARTUP_STATE = "hadoop.security.authentication.startup.state";
+    public static final String HADOOP_SECURITY_AUTHENTICATION_STARTUP_STATE =
+            "hadoop.security.authentication.startup.state";
 
     /**
      * loginUserFromKeytab user
@@ -145,7 +172,7 @@ public class Constants {
     public static final String KERBEROS = "kerberos";
 
     /**
-     *  support hive datasource in one session
+     * support hive datasource in one session
      */
     public static final String SUPPORT_HIVE_ONE_SESSION = "support.hive.oneSession";
 
@@ -153,8 +180,8 @@ public class Constants {
      * driver
      */
     public static final String ORG_POSTGRESQL_DRIVER = "org.postgresql.Driver";
-    public static final String COM_MYSQL_CJ_JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    public static final String COM_MYSQL_JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    public static final String COM_MYSQL_CJ_JDBC_DRIVER = "org.mariadb.jdbc.Driver";
+    public static final String COM_MYSQL_JDBC_DRIVER = "org.mariadb.jdbc.Driver";
     public static final String ORG_APACHE_HIVE_JDBC_HIVE_DRIVER = "org.apache.hive.jdbc.HiveDriver";
     public static final String COM_CLICKHOUSE_JDBC_DRIVER = "ru.yandex.clickhouse.ClickHouseDriver";
     public static final String COM_ORACLE_JDBC_DRIVER = "oracle.jdbc.OracleDriver";
@@ -163,7 +190,6 @@ public class Constants {
     public static final String COM_PRESTO_JDBC_DRIVER = "com.facebook.presto.jdbc.PrestoDriver";
     public static final String COM_REDSHIFT_JDBC_DRIVER = "com.amazon.redshift.jdbc42.Driver";
     public static final String COM_ATHENA_JDBC_DRIVER = "com.simba.athena.jdbc.Driver";
-
 
     /**
      * validation Query
@@ -182,7 +208,7 @@ public class Constants {
     /**
      * jdbc url
      */
-    public static final String JDBC_MYSQL = "jdbc:mysql://";
+    public static final String JDBC_MYSQL = "jdbc:mariadb://";
     public static final String JDBC_POSTGRESQL = "jdbc:postgresql://";
     public static final String JDBC_HIVE_2 = "jdbc:hive2://";
     public static final String JDBC_CLICKHOUSE = "jdbc:clickhouse://";
@@ -224,7 +250,6 @@ public class Constants {
      */
     public static final String COLON = ":";
 
-
     /**
      * AT SIGN @
      */
@@ -234,7 +259,6 @@ public class Constants {
      * SEMICOLON ;
      */
     public static final String SEMICOLON = ";";
-
 
     /**
      * EQUAL_SIGN =
