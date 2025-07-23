@@ -116,9 +116,9 @@ traffic:
     tenant-switch: false
     default-tenant-qps-rate: 10
     #customize-tenant-qps-rate:
-      # eg.
-      #tenant1: 11
-      #tenant2: 20
+    # eg.
+    #tenant1: 11
+    #tenant2: 20
 
 master:
   listen-port: 5678
@@ -259,10 +259,10 @@ spring:
     activate:
       on-profile: mysql
   sql:
-     init:
-       schema-locations: classpath:sql/dolphinscheduler_mysql.sql
+    init:
+      schema-locations: classpath:sql/dolphinscheduler_mysql.sql
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/dolphinscheduler?useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3306/dolphinscheduler?useUnicode=true&characterEncoding=UTF-8&&useSSL=false&&&allowPublicKeyRetrieval=true
     username: root
-    password: root
+    password: 123456
