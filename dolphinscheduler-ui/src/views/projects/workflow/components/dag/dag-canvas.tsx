@@ -15,39 +15,39 @@
  * limitations under the License.
  */
 
-import { defineComponent, ref, inject } from 'vue'
+import {defineComponent, ref, inject} from 'vue'
 import Styles from './dag.module.scss'
-import { useCanvasInit, useCellActive } from './dag-hooks'
+import {useCanvasInit, useCellActive} from './dag-hooks'
 
 export default defineComponent({
-  name: 'workflow-dag-canvas',
-  emits: ['drop'],
-  setup(props, context) {
-    const readonly = inject('readonly', ref(false))
-    const graph = inject('graph', ref())
+    name: 'workflow-dag-canvas',
+    emits: ['drop'],
+    setup(props, context) {
+        const readonly = inject('readonly', ref(false))
+        const graph = inject('graph', ref())
 
-    const { paper, minimap, container } = useCanvasInit({ readonly, graph })
+        const {paper, minimap, container} = useCanvasInit({readonly, graph})
 
-    // Change the style on cell hover and select
-    useCellActive({ graph })
-    const preventDefault = (e: DragEvent) => {
-      e.preventDefault()
+        // Change the style on cell hover and select
+        useCellActive({graph})
+        const preventDefault = (e: DragEvent) => {
+            e.preventDefault()
+        }
+
+        return () => (
+            <div
+                ref={container}
+                class={[Styles.canvas, 'dag-container']}
+                onDrop={(e: DragEvent) => {
+                    context.emit('drop', e)
+                }}
+                onDragenter={preventDefault}
+                onDragover={preventDefault}
+                onDragleave={preventDefault}
+            >
+                <div ref={paper} class={Styles.paper}></div>
+                <div ref={minimap} class={Styles.minimap}></div>
+            </div>
+        )
     }
-
-    return () => (
-      <div
-        ref={container}
-        class={[Styles.canvas, 'dag-container']}
-        onDrop={(e) => {
-          context.emit('drop', e)
-        }}
-        onDragenter={preventDefault}
-        onDragover={preventDefault}
-        onDragleave={preventDefault}
-      >
-        <div ref={paper} class={Styles.paper}></div>
-        <div ref={minimap} class={Styles.minimap}></div>
-      </div>
-    )
-  }
 })
