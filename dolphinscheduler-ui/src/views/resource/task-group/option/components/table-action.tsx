@@ -15,136 +15,136 @@
  * limitations under the License.
  */
 
-import { defineComponent, PropType } from 'vue'
-import { useI18n } from 'vue-i18n'
-import type { Router } from 'vue-router'
-import { NSpace, NTooltip, NButton, NIcon, NSwitch } from 'naive-ui'
-import { EditOutlined, UnorderedListOutlined } from '@vicons/antd'
+import {defineComponent, PropType} from 'vue'
+import {useI18n} from 'vue-i18n'
+import type {Router} from 'vue-router'
+import {NSpace, NTooltip, NButton, NIcon, NSwitch} from 'naive-ui'
+import {EditOutlined, UnorderedListOutlined} from '@vicons/antd'
 import type {
-  TaskGroupIdReq,
-  TaskGroup
+    TaskGroupIdReq,
+    TaskGroup
 } from '@/service/modules/task-group/types'
-import { startTaskGroup, closeTaskGroup } from '@/service/modules/task-group'
-import { useRouter } from 'vue-router'
+import {startTaskGroup, closeTaskGroup} from '@/service/modules/task-group'
+import {useRouter} from 'vue-router'
 
 interface ItemRow extends TaskGroup {
-  projectList: []
+    projectList: []
 }
 
 const props = {
-  row: {
-    type: Object as PropType<ItemRow>,
-    default: {}
-  }
+    row: {
+        type: Object as PropType<ItemRow>,
+        default: {}
+    }
 }
 
 const TableAction = defineComponent({
-  name: 'TableAction',
-  props,
-  emits: ['resetTableData', 'updateItem'],
-  setup(props, { emit }) {
-    const { t } = useI18n()
-    const router: Router = useRouter()
+    name: 'TableAction',
+    props,
+    emits: ['resetTableData', 'updateItem'],
+    setup(props, {emit}) {
+        const {t} = useI18n()
+        const router: Router = useRouter()
 
-    const handleEdit = (
-      id: number,
-      name: string,
-      projectCode: number,
-      groupSize: number,
-      description: string,
-      status: number
-    ) => {
-      emit('updateItem', id, name, projectCode, groupSize, description, status)
+        const handleEdit = (
+            id: number,
+            name: string,
+            projectCode: number,
+            groupSize: number,
+            description: string,
+            status: number
+        ) => {
+            emit('updateItem', id, name, projectCode, groupSize, description, status)
+        }
+
+        const handleSwitchStatus = (value: number, id: number) => {
+            const params: TaskGroupIdReq = {id: id}
+
+            if (value === 1) {
+                startTaskGroup(params).then(() => {
+                    emit('resetTableData')
+                })
+            } else if (value === 0) {
+                closeTaskGroup(params).then(() => {
+                    emit('resetTableData')
+                })
+            }
+        }
+
+        const handleViewQueue = (id: number) => {
+            router.push({name: 'task-group-queue', params: {id: id}})
+        }
+
+        return {t, handleEdit, handleViewQueue, handleSwitchStatus}
+    },
+    render() {
+        const {t, handleEdit, handleViewQueue, handleSwitchStatus} = this
+
+        return (
+            <NSpace>
+                <NTooltip trigger={'hover'}>
+                    {{
+                        default: () => t('resource.task_group_option.switch_status'),
+                        trigger: () => (
+                            <NSwitch
+                                v-model={[this.row.status, 'value']}
+                                checkedValue={1}
+                                uncheckedValue={0}
+                                onUpdate:value={(value: number) =>
+                                    handleSwitchStatus(value, this.row.id)
+                                }
+                            />
+                        )
+                    }}
+                </NTooltip>
+                <NTooltip trigger={'hover'}>
+                    {{
+                        default: () => t('resource.task_group_option.edit'),
+                        trigger: () => (
+                            <NButton
+                                size='small'
+                                type='info'
+                                tag='div'
+                                onClick={() =>
+                                    handleEdit(
+                                        this.row.id,
+                                        this.row.name,
+                                        this.row.projectCode,
+                                        this.row.groupSize,
+                                        this.row.description,
+                                        this.row.status
+                                    )
+                                }
+                                circle
+                            >
+                                <NIcon>
+                                    <EditOutlined/>
+                                </NIcon>
+                            </NButton>
+                        )
+                    }}
+                </NTooltip>
+                <NTooltip trigger={'hover'}>
+                    {{
+                        default: () => t('resource.task_group_option.view_queue'),
+                        trigger: () => (
+                            <NButton
+                                size='small'
+                                type='primary'
+                                tag='div'
+                                onClick={() => handleViewQueue(this.row.id)}
+                                circle
+                            >
+                                <NIcon>
+                                    <UnorderedListOutlined/>
+                                </NIcon>
+                            </NButton>
+                        )
+                    }}
+                </NTooltip>
+            </NSpace>
+        )
     }
-
-    const handleSwitchStatus = (value: number, id: number) => {
-      const params: TaskGroupIdReq = { id: id }
-
-      if (value === 1) {
-        startTaskGroup(params).then(() => {
-          emit('resetTableData')
-        })
-      } else if (value === 0) {
-        closeTaskGroup(params).then(() => {
-          emit('resetTableData')
-        })
-      }
-    }
-
-    const handleViewQueue = (id: number) => {
-      router.push({ name: 'task-group-queue', params: { id: id } })
-    }
-
-    return { t, handleEdit, handleViewQueue, handleSwitchStatus }
-  },
-  render() {
-    const { t, handleEdit, handleViewQueue, handleSwitchStatus } = this
-
-    return (
-      <NSpace>
-        <NTooltip trigger={'hover'}>
-          {{
-            default: () => t('resource.task_group_option.switch_status'),
-            trigger: () => (
-              <NSwitch
-                v-model={[this.row.status, 'value']}
-                checkedValue={1}
-                uncheckedValue={0}
-                onUpdate:value={(value) =>
-                  handleSwitchStatus(value, this.row.id)
-                }
-              />
-            )
-          }}
-        </NTooltip>
-        <NTooltip trigger={'hover'}>
-          {{
-            default: () => t('resource.task_group_option.edit'),
-            trigger: () => (
-              <NButton
-                size='small'
-                type='info'
-                tag='div'
-                onClick={() =>
-                  handleEdit(
-                    this.row.id,
-                    this.row.name,
-                    this.row.projectCode,
-                    this.row.groupSize,
-                    this.row.description,
-                    this.row.status
-                  )
-                }
-                circle
-              >
-                <NIcon>
-                  <EditOutlined />
-                </NIcon>
-              </NButton>
-            )
-          }}
-        </NTooltip>
-        <NTooltip trigger={'hover'}>
-          {{
-            default: () => t('resource.task_group_option.view_queue'),
-            trigger: () => (
-              <NButton
-                size='small'
-                type='primary'
-                tag='div'
-                onClick={() => handleViewQueue(this.row.id)}
-                circle
-              >
-                <NIcon>
-                  <UnorderedListOutlined />
-                </NIcon>
-              </NButton>
-            )
-          }}
-        </NTooltip>
-      </NSpace>
-    )
-  }
 })
 
 export default TableAction
