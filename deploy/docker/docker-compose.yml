@@ -18,10 +18,10 @@ version: "3.8"
 
 services:
   dolphinscheduler-postgresql:
-    image: bitnami/postgresql:11.11.0
+    image: hub.hmf.xyz/base/postgresql:14.4.0-debian-11-r23
     ports:
       - "5432:5432"
-    profiles: ["all", "schema"]
+    profiles: [ "all", "schema" ]
     environment:
       POSTGRESQL_USERNAME: root
       POSTGRESQL_PASSWORD: root
@@ -29,7 +29,7 @@ services:
     volumes:
       - dolphinscheduler-postgresql:/bitnami/postgresql
     healthcheck:
-      test: ["CMD", "bash", "-c", "cat < /dev/null > /dev/tcp/127.0.0.1/5432"]
+      test: [ "CMD", "bash", "-c", "cat < /dev/null > /dev/tcp/127.0.0.1/5432" ]
       interval: 5s
       timeout: 60s
       retries: 120
@@ -37,15 +37,15 @@ services:
       - dolphinscheduler
 
   dolphinscheduler-zookeeper:
-    image: bitnami/zookeeper:3.6.2
-    profiles: ["all"]
+    image: hub.hmf.xyz/library/zookeeper:3.5.8
+    profiles: [ "all" ]
     environment:
       ALLOW_ANONYMOUS_LOGIN: "yes"
       ZOO_4LW_COMMANDS_WHITELIST: srvr,ruok,wchs,cons
     volumes:
       - dolphinscheduler-zookeeper:/bitnami/zookeeper
     healthcheck:
-      test: ["CMD", "bash", "-c", "cat < /dev/null > /dev/tcp/127.0.0.1/2181"]
+      test: [ "CMD", "bash", "-c", "cat < /dev/null > /dev/tcp/127.0.0.1/2181" ]
       interval: 5s
       timeout: 60s
       retries: 120
@@ -55,7 +55,7 @@ services:
   dolphinscheduler-schema-initializer:
     image: ${HUB}/dolphinscheduler-tools:${TAG}
     env_file: .env
-    profiles: ["schema"]
+    profiles: [ "schema" ]
     command: [ tools/bin/upgrade-schema.sh ]
     depends_on:
       dolphinscheduler-postgresql:
@@ -72,7 +72,7 @@ services:
     ports:
       - "12345:12345"
       - "25333:25333"
-    profiles: ["all"]
+    profiles: [ "all" ]
     env_file: .env
     healthcheck:
       test: [ "CMD", "curl", "http://localhost:12345/dolphinscheduler/actuator/health" ]
@@ -91,7 +91,7 @@ services:
 
   dolphinscheduler-alert:
     image: ${HUB}/dolphinscheduler-alert-server:${TAG}
-    profiles: ["all"]
+    profiles: [ "all" ]
     env_file: .env
     healthcheck:
       test: [ "CMD", "curl", "http://localhost:50053/actuator/health" ]
@@ -105,7 +105,7 @@ services:
 
   dolphinscheduler-master:
     image: ${HUB}/dolphinscheduler-master:${TAG}
-    profiles: ["all"]
+    profiles: [ "all" ]
     env_file: .env
     healthcheck:
       test: [ "CMD", "curl", "http://localhost:5679/actuator/health" ]
@@ -123,7 +123,7 @@ services:
 
   dolphinscheduler-worker:
     image: ${HUB}/dolphinscheduler-worker:${TAG}
-    profiles: ["all"]
+    profiles: [ "all" ]
     env_file: .env
     healthcheck:
       test: [ "CMD", "curl", "http://localhost:1235/actuator/health" ]

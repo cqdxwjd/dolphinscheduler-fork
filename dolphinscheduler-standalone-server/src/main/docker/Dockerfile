@@ -15,20 +15,16 @@
 # limitations under the License.
 #
 
-FROM hub.hmf.xyz/openjdk:8-jre-slim-bullseye
+FROM hub.hmf.xyz/base/dolphinscheduler-baseos:8
 
 ENV DOCKER true
 ENV TZ Asia/Shanghai
 ENV DOLPHINSCHEDULER_HOME /opt/dolphinscheduler
 
-RUN apt update ; \
-    apt install -y curl sudo ; \
-    rm -rf /var/lib/apt/lists/*
-
 WORKDIR $DOLPHINSCHEDULER_HOME
 
 ADD ./target/standalone-server $DOLPHINSCHEDULER_HOME
 
-EXPOSE 12345 25333
+EXPOSE 12345
 
 CMD [ "/bin/bash", "./bin/start.sh" ]
