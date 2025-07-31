@@ -52,7 +52,9 @@ const StateCard = defineComponent({
       ctx.emit('updateDatePickerValue', val)
     }
 
-    return { onUpdateDatePickerValue }
+    const { columnsRef } = useTable()
+
+    return { onUpdateDatePickerValue, columnsRef }
   },
   render() {
     const {
@@ -61,9 +63,9 @@ const StateCard = defineComponent({
       tableData,
       chartData,
       onUpdateDatePickerValue,
-      loadingRef
+      loadingRef,
+      columnsRef
     } = this
-    const { columnsRef } = useTable()
     return (
       <Card title={title} style={{ minHeight: '820px' }}>
         {{
