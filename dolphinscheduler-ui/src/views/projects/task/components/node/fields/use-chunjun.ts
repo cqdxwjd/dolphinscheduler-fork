@@ -26,6 +26,7 @@ export function useChunjun(model: { [field: string]: any }): IJsonItem[] {
   const customParameterSpan = ref(0)
 
   const initConstants = () => {
+    model.customConfig = true
     jsonEditorSpan.value = 24
     customParameterSpan.value = 24
   }
