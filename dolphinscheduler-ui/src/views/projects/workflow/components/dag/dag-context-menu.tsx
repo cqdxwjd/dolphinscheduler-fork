@@ -61,6 +61,7 @@ export default defineComponent({
   props,
   emits: ['hide', 'start', 'edit', 'viewLog', 'copyTask', 'removeTasks'],
   setup(props, ctx) {
+    const { t } = useI18n()
     const graph = inject('graph', ref())
     const route = useRoute()
     const projectCode = Number(route.params.projectCode)
@@ -115,11 +116,12 @@ export default defineComponent({
       handleEdit,
       handleCopy,
       handleDelete,
-      handleViewLog
+      handleViewLog,
+      t
     }
   },
   render() {
-    const { t } = useI18n()
+    const { t } = this
 
     return (
       this.visible && (
