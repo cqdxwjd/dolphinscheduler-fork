@@ -35,6 +35,7 @@ export default defineComponent({
   props,
   emits: ['update:show', 'update:row', 'updateList'],
   setup(props, ctx) {
+    const { t } = useI18n()
     const { importState } = useForm()
     const { handleImportDefinition } = useModal(importState, ctx)
     const hideModal = () => {
@@ -56,12 +57,13 @@ export default defineComponent({
       handleImport,
       customRequest,
       ...toRefs(importState),
+      t,
       trim
     }
   },
 
   render() {
-    const { t } = useI18n()
+    const { t } = this
 
     return (
       <Modal

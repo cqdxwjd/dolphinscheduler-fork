@@ -44,6 +44,7 @@ export default defineComponent({
   props,
   emits: ['update:show', 'update:row', 'updateList'],
   setup(props, ctx) {
+    const { t } = useI18n()
     const { variables, createColumns, getTableData } = useTable(ctx)
     const { importState } = useForm()
     const { handleImportDefinition } = useModal(importState, ctx)
@@ -84,13 +85,13 @@ export default defineComponent({
       handleImport,
       customRequest,
       requestData,
+      t,
       ...toRefs(variables)
     }
   },
 
   render() {
-    const { t } = useI18n()
-    const { requestData, loadingRef } = this
+    const { requestData, loadingRef, t } = this
 
     return (
       <Modal

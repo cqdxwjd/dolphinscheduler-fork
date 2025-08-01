@@ -48,6 +48,7 @@ export default defineComponent({
   emits: ['update:show', 'update:row', 'updateList'],
   setup(props, ctx) {
     const { copyState } = useForm()
+    const { t } = useI18n()
     const { handleBatchCopyDefinition } = useModal(copyState, ctx)
     const hideModal = () => {
       ctx.emit('update:show')
@@ -77,13 +78,13 @@ export default defineComponent({
       hideModal,
       handleCopy,
       projectOptions,
+      t,
       ...toRefs(copyState)
     }
   },
 
   render() {
-    const { t } = useI18n()
-
+    const { t } = this
     return (
       <Modal
         show={this.$props.show}
