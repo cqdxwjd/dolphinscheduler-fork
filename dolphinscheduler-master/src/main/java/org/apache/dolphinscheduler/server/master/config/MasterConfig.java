@@ -73,6 +73,8 @@ public class MasterConfig implements Validator {
      * Master heart beat task execute interval.
      */
     private Duration heartbeatInterval = Duration.ofSeconds(10);
+
+    private Boolean heartbeatLogEnabled = true;
     /**
      * task submit max retry times.
      */
@@ -151,6 +153,7 @@ public class MasterConfig implements Validator {
         logger.info("Master config: dispatchTaskNumber -> {} ", dispatchTaskNumber);
         logger.info("Master config: hostSelector -> {} ", hostSelector);
         logger.info("Master config: heartbeatInterval -> {} ", heartbeatInterval);
+        logger.info("Master config: heartbeatLogEnabled -> {} ", heartbeatLogEnabled);
         logger.info("Master config: taskCommitRetryTimes -> {} ", taskCommitRetryTimes);
         logger.info("Master config: taskCommitInterval -> {} ", taskCommitInterval);
         logger.info("Master config: stateWheelInterval -> {} ", stateWheelInterval);

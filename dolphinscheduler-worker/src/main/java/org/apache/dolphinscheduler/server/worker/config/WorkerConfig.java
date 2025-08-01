@@ -47,6 +47,7 @@ public class WorkerConfig implements Validator {
     private int listenPort = 1234;
     private int execThreads = 10;
     private Duration heartbeatInterval = Duration.ofSeconds(10);
+    private Boolean heartbeatLogEnabled = true;
     private int hostWeight = 100;
     private boolean tenantAutoCreate = true;
     private boolean tenantDistributedUser = false;
@@ -100,6 +101,7 @@ public class WorkerConfig implements Validator {
         logger.info("Worker config: listenPort -> {}", listenPort);
         logger.info("Worker config: execThreads -> {}", execThreads);
         logger.info("Worker config: heartbeatInterval -> {}", heartbeatInterval);
+        logger.info("Worker config: heartbeatLogEnabled -> {}", heartbeatLogEnabled);
         logger.info("Worker config: hostWeight -> {}", hostWeight);
         logger.info("Worker config: tenantAutoCreate -> {}", tenantAutoCreate);
         logger.info("Worker config: tenantDistributedUser -> {}", tenantDistributedUser);

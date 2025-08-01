@@ -85,8 +85,10 @@ public class WorkerHeartBeatTask extends BaseHeartBeatTask<WorkerHeartBeat> {
         for (String workerGroupRegistryPath : workerConfig.getWorkerGroupRegistryPaths()) {
             registryClient.persistEphemeral(workerGroupRegistryPath, workerHeartBeatJson);
         }
-        log.info("Success write worker group heartBeatInfo into registry, workGroupPath: {} workerHeartBeatInfo: {}",
-                workerConfig.getWorkerGroupRegistryPaths(), workerHeartBeatJson);
+        if (workerConfig.getHeartbeatLogEnabled()) {
+            log.info("Success write worker group heartBeatInfo into registry, workGroupPath: {} workerHeartBeatInfo: {}",
+                    workerConfig.getWorkerGroupRegistryPaths(), workerHeartBeatJson);
+        }
     }
 
     public int getServerStatus(double loadAverage,
