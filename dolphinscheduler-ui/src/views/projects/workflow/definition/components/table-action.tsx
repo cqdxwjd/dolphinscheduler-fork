@@ -56,6 +56,7 @@ export default defineComponent({
     'gotoWorkflowTree'
   ],
   setup(props, ctx) {
+    const { t } = useI18n()
     const handleEditWorkflow = () => {
       ctx.emit('editWorkflow')
     }
@@ -107,11 +108,12 @@ export default defineComponent({
       handleExportWorkflow,
       handleGotoTimingManage,
       handleGotoWorkflowTree,
+      t,
       ...toRefs(props)
     }
   },
   render() {
-    const { t } = useI18n()
+    const { t } = this
     const releaseState = this.row?.releaseState
     const scheduleReleaseState = this.row?.scheduleReleaseState
 
