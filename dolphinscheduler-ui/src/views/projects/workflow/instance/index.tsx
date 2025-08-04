@@ -15,137 +15,138 @@
  * limitations under the License.
  */
 
-import {defineComponent, onMounted, onUnmounted, toRefs, watch} from 'vue'
-import {useI18n} from 'vue-i18n'
+import { defineComponent, onMounted, onUnmounted, toRefs, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import {
-    NButton,
-    NDataTable,
-    NPagination,
-    NPopconfirm,
-    NTooltip,
-    NSpace
+  NButton,
+  NDataTable,
+  NPagination,
+  NPopconfirm,
+  NTooltip,
+  NSpace
 } from 'naive-ui'
-import {useTable} from './use-table'
+import { useTable } from './use-table'
 import Card from '@/components/card'
 import ProcessInstanceCondition from './components/process-instance-condition'
-import type {IWorkflowInstanceSearch} from './types'
-import {IWorkflowInstance} from "@/service/modules/process-instances/types";
+import type { IWorkflowInstanceSearch } from './types'
+import { IWorkflowInstance } from '@/service/modules/process-instances/types'
 
 export default defineComponent({
-    name: 'WorkflowInstanceList',
-    setup() {
-        let setIntervalP: number
-        const {variables, createColumns, getTableData, batchDeleteInstance} =
-            useTable()
+  name: 'WorkflowInstanceList',
+  setup() {
+    const { t } = useI18n()
+    let setIntervalP: number
+    const { variables, createColumns, getTableData, batchDeleteInstance } =
+      useTable()
 
-        const requestData = () => {
-            getTableData()
-        }
-
-        const handleSearch = (params: IWorkflowInstanceSearch) => {
-            variables.searchVal = params.searchVal
-            variables.executorName = params.executorName
-            variables.host = params.host
-            variables.stateType = params.stateType
-            variables.startDate = params.startDate
-            variables.endDate = params.endDate
-            variables.page = 1
-            requestData()
-        }
-
-        const handleChangePageSize = () => {
-            variables.page = 1
-            requestData()
-        }
-
-        const handleBatchDelete = () => {
-            batchDeleteInstance()
-        }
-
-        onMounted(() => {
-            createColumns(variables)
-            requestData()
-
-            // Update timing list data
-            setIntervalP = setInterval(() => {
-                requestData()
-            }, 9000)
-        })
-
-        watch(useI18n().locale, () => {
-            createColumns(variables)
-        })
-
-        onUnmounted(() => {
-            clearInterval(setIntervalP)
-        })
-
-        return {
-            requestData,
-            handleSearch,
-            handleChangePageSize,
-            handleBatchDelete,
-            ...toRefs(variables)
-        }
-    },
-    render() {
-        const {t} = useI18n()
-        const {loadingRef} = this
-
-        return (
-            <NSpace vertical>
-                <Card>
-                    <ProcessInstanceCondition onHandleSearch={this.handleSearch}/>
-                </Card>
-                <Card title={t('project.workflow.workflow_instance')}>
-                    <NSpace vertical>
-                        <NDataTable
-                            loading={loadingRef}
-                            rowKey={(row: IWorkflowInstance) => row.id}
-                            columns={this.columns}
-                            data={this.tableData}
-                            striped
-                            size={'small'}
-                            scrollX={this.tableWidth}
-                            v-model:checked-row-keys={this.checkedRowKeys}
-                            row-class-name='items-workflow-instances'
-                        />
-                        <NSpace justify='center'>
-                            <NPagination
-                                v-model:page={this.page}
-                                v-model:page-size={this.pageSize}
-                                page-count={this.totalPage}
-                                show-size-picker
-                                page-sizes={[10, 30, 50]}
-                                show-quick-jumper
-                                onUpdatePage={this.requestData}
-                                onUpdatePageSize={this.handleChangePageSize}
-                            />
-                        </NSpace>
-                    </NSpace>
-                    <NTooltip>
-                        {{
-                            default: () => t('project.workflow.delete'),
-                            trigger: () => (
-                                <NButton
-                                    tag='div'
-                                    type='primary'
-                                    disabled={this.checkedRowKeys.length <= 0}
-                                    style='position: absolute; bottom: 10px; left: 10px;'
-                                    class='btn-delete-all'
-                                >
-                                    <NPopconfirm onPositiveClick={this.handleBatchDelete}>
-                                        {{
-                                            default: () => t('project.workflow.delete_confirm'),
-                                            trigger: () => t('project.workflow.delete')
-                                        }}
-                                    </NPopconfirm>
-                                </NButton>
-                            )
-                        }}
-                    </NTooltip>
-                </Card>
-            </NSpace>
-        )
+    const requestData = () => {
+      getTableData()
     }
+
+    const handleSearch = (params: IWorkflowInstanceSearch) => {
+      variables.searchVal = params.searchVal
+      variables.executorName = params.executorName
+      variables.host = params.host
+      variables.stateType = params.stateType
+      variables.startDate = params.startDate
+      variables.endDate = params.endDate
+      variables.page = 1
+      requestData()
+    }
+
+    const handleChangePageSize = () => {
+      variables.page = 1
+      requestData()
+    }
+
+    const handleBatchDelete = () => {
+      batchDeleteInstance()
+    }
+
+    onMounted(() => {
+      createColumns(variables)
+      requestData()
+
+      // Update timing list data
+      setIntervalP = setInterval(() => {
+        requestData()
+      }, 9000)
+    })
+
+    watch(useI18n().locale, () => {
+      createColumns(variables)
+    })
+
+    onUnmounted(() => {
+      clearInterval(setIntervalP)
+    })
+
+    return {
+      requestData,
+      handleSearch,
+      handleChangePageSize,
+      handleBatchDelete,
+      t,
+      ...toRefs(variables)
+    }
+  },
+  render() {
+    const { loadingRef, t } = this
+
+    return (
+      <NSpace vertical>
+        <Card>
+          <ProcessInstanceCondition onHandleSearch={this.handleSearch} />
+        </Card>
+        <Card title={t('project.workflow.workflow_instance')}>
+          <NSpace vertical>
+            <NDataTable
+              loading={loadingRef}
+              rowKey={(row: IWorkflowInstance) => row.id}
+              columns={this.columns}
+              data={this.tableData}
+              striped
+              size={'small'}
+              scrollX={this.tableWidth}
+              v-model:checked-row-keys={this.checkedRowKeys}
+              row-class-name='items-workflow-instances'
+            />
+            <NSpace justify='center'>
+              <NPagination
+                v-model:page={this.page}
+                v-model:page-size={this.pageSize}
+                page-count={this.totalPage}
+                show-size-picker
+                page-sizes={[10, 30, 50]}
+                show-quick-jumper
+                onUpdatePage={this.requestData}
+                onUpdatePageSize={this.handleChangePageSize}
+              />
+            </NSpace>
+          </NSpace>
+          <NTooltip>
+            {{
+              default: () => t('project.workflow.delete'),
+              trigger: () => (
+                <NButton
+                  tag='div'
+                  type='primary'
+                  disabled={this.checkedRowKeys.length <= 0}
+                  style='position: absolute; bottom: 10px; left: 10px;'
+                  class='btn-delete-all'
+                >
+                  <NPopconfirm onPositiveClick={this.handleBatchDelete}>
+                    {{
+                      default: () => t('project.workflow.delete_confirm'),
+                      trigger: () => t('project.workflow.delete')
+                    }}
+                  </NPopconfirm>
+                </NButton>
+              )
+            }}
+          </NTooltip>
+        </Card>
+      </NSpace>
+    )
+  }
 })

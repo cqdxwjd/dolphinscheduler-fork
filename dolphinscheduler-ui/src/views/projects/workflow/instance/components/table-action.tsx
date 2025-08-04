@@ -52,6 +52,7 @@ export default defineComponent({
     'deleteInstance'
   ],
   setup(props, ctx) {
+    const { t } = useI18n()
     const router: Router = useRouter()
 
     const handleEdit = () => {
@@ -98,11 +99,12 @@ export default defineComponent({
       handleSuspend,
       handleDeleteInstance,
       handleGantt,
+      t,
       ...toRefs(props)
     }
   },
   render() {
-    const { t } = useI18n()
+    const { t } = this
     const state = this.row?.state
 
     return (

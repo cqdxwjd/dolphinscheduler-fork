@@ -26,6 +26,7 @@ export default defineComponent({
   name: 'ProcessInstanceCondition',
   emits: ['handleSearch'],
   setup(props, ctx) {
+    const { t } = useI18n()
     const searchValRef = ref('')
     const executorNameRef = ref('')
     const hostRef = ref('')
@@ -65,11 +66,12 @@ export default defineComponent({
       stateTypeRef,
       startEndTimeRef,
       handleSearch,
+      t,
       trim
     }
   },
   render() {
-    const { t } = useI18n()
+    const { t } = this
     const options = stateType(t)
 
     return (
