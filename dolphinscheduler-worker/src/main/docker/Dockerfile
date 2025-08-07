@@ -24,6 +24,7 @@ ENV DOLPHINSCHEDULER_HOME /opt/dolphinscheduler
 WORKDIR $DOLPHINSCHEDULER_HOME
 
 ADD ./target/worker-server $DOLPHINSCHEDULER_HOME
+ADD ./src/main/docker/downloads/chunjun-dist-*.tar.gz /opt
 
 EXPOSE 1235
 
